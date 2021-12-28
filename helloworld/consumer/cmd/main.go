@@ -6,6 +6,6 @@ import (
 )
 
 func main() {
-	topic := conf.Topic
+	topic := conf.Test_Topic
 	consumer.Consume(topic)
 }
