@@ -22,7 +22,7 @@ func Produce(topic string, limit int) {
 	}
 	defer producer.Close()
 	for i := 0; i < limit; i++ {
-		str := strconv.Itoa(int(time.Now().UnixNano()))
+		str := strconv.Itoa(int(time.Now().UnixNano())) + "这是go语言发送的消息"
 		msg := &sarama.ProducerMessage{Topic: topic, Key: nil, Value: sarama.StringEncoder(str)}
 		partition, offset, err := producer.SendMessage(msg) // 发送逻辑也是封装的异步发送逻辑，可以理解为将异步封装成了同步
 		if err != nil {
